@@ -27,6 +27,15 @@
   "scripts": {
     "test": "grunt nodeunit"
   },
+  "dependencies": {
+    "express": ">= 3.4.4",
+    "mongojs": "*",
+    "underscore-node": "*",
+    "convoy": "*",
+    "ember": "*",
+    "showdown": "*",
+    "html5-manifest": "git://github.com/charlesjolley/html5-manifest.git#master"
+  },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-nodeunit": "~0.2.0",
