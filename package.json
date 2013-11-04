@@ -31,6 +31,7 @@
     "express": ">= 3.4.4",
     "mongojs": "*",
     "underscore-node": "*",
+    "async": "*",
     "convoy": "*",
     "ember": "*",
     "showdown": "*",
