@@ -1,3 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Martenblog</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+<body>
+  <script type="text/x-handlebars" data-template-name="rutabaga/index">
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="topics">
+    {{#each itemController="topic"}}
+      <div class="topic">{{topic}}</div>
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="rutabaga">
     <section id="martenblog">
       <header id="header">
         <img src="images/gretel.jpg" />
@@ -20,6 +39,7 @@
           </div>
 
           <section id="entries">
+            {{outlet}}
           </section>
         </section>
 
@@ -44,3 +64,8 @@
         </span>
       </footer>
     </section>
+  </script>
+
+  <script src="/js/application.js"></script>
+</body>
+</html>
