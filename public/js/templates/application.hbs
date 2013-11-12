@@ -3,26 +3,10 @@
         <img src="images/gretel.jpg" />
         <span id="title">Martenblog</span>
       </header>
-
       <section id="hlavni">
         <section id="rutabaga">
-          <div id="pagination">
-            <span class="pagelink">1</span>
-            <span class="pagelink">2</span>
-            <span class="pagelink">3</span>
-            <span class="pagelink">4</span>
-            ...
-            <span class="pagelink">next</span>
-          </div>
-
-          <div id="expanded-count">
-            Expanded: {{expanded}} {{inflection}}
-          </div>
-
-          <section id="entries">
-          </section>
+          {{outlet}}
         </section>
-
         <section id="sidebar">
           <div id="pointless-photo">
             <img src="images/mustelid.jpg" />
@@ -31,7 +15,7 @@
             A calendar goes here
           </div>
           <section id="topics">
-            {{outlet}}
+            {{render topics topics}}
           </section>
         </section>
       </section>

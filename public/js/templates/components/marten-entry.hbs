@@ -1,0 +1,18 @@
+  <article class="entry">
+    <div class="timestamp">{{created_at}}</div>
+    <div class="subject">{{subject}}</div>
+    <div class="topics">Topics: {{topics}}</div>
+    <div class="entry">
+      {{#if bloated}}
+        {{{entry}}}
+      {{else}}
+        {{truncated}}
+      {{/if}}
+    </div>
+    {{#if bloated}}
+      <button {{action 'bloat'}}>contract</button>
+    {{else}}
+      <button {{action 'bloat'}}>expand</button>
+    {{/if}}
+  </article>
+  <hr />

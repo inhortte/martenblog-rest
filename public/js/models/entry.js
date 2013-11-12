@@ -1,8 +1,7 @@
 var Entry = DS.Model.extend({
   created_at: DS.attr('number'),
   subject: DS.attr('string'),
-  subedit: false,
-  truncated: DS.attr('boolean'),
+  truncated: DS.attr(),
   entry: DS.attr()
 });
 

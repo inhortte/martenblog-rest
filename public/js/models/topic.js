@@ -1,5 +1,6 @@
 var Topic = DS.Model.extend({
-  topic: DS.attr('string')
+  topic: DS.attr('string'),
+  entryCount: DS.attr('number')
 });
 
 Topic.FIXTURES = [

@@ -5,9 +5,15 @@ var App = window.App = require('./config/app');
 require('./templates');
 
 
+App.MartenEntryComponent = require('./components/marten_entry_component');
+App.MartenTopicComponent = require('./components/marten_topic_component');
+App.EntriesController = require('./controllers/entries_controller');
+App.TopicsController = require('./controllers/topics_controller');
 App.Entry = require('./models/entry');
 App.Thurk = require('./models/thurk');
 App.Topic = require('./models/topic');
+App.EntriesRoute = require('./routes/entries_route');
+App.EntryRoute = require('./routes/entry_route');
 App.TopicsRoute = require('./routes/topics_route');
 App.EditEntrySubjectView = require('./views/edit_entry_subject_view');
 

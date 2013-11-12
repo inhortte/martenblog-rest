@@ -1,5 +1,5 @@
 // by default, persist application data to localStorage.
-require('../vendor/localstorage_adapter');
+// require('../vendor/localstorage_adapter');
 
 /*
 module.exports = DS.Store.extend({
@@ -10,5 +10,6 @@ module.exports = DS.Store.extend({
 */
 
 module.exports = DS.Store.extend({
-  adapter: DS.FixtureAdapter.create()
+  // adapter: DS.FixtureAdapter.create()
+//  adapter: DS.RESTAdapter.create()
 });

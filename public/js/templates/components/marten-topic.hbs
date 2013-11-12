@@ -1,0 +1,7 @@
+<span style="float: left;" {{bind-attr class="editing"}}>
+  <a {{bind-attr href="#"}} {{action 'showId'}}>{{topic}}</a>
+</span>
+{{#if isShowingId}}
+  <span style="float: left;">{{id}}</span>
+{{/if}}
+<span style="float: right;">({{entryCount}})</span>
