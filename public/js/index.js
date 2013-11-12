@@ -14,6 +14,7 @@ App.Thurk = require('./models/thurk');
 App.Topic = require('./models/topic');
 App.EntriesRoute = require('./routes/entries_route');
 App.EntryRoute = require('./routes/entry_route');
+App.IndexRoute = require('./routes/index_route');
 App.TopicsRoute = require('./routes/topics_route');
 App.EditEntrySubjectView = require('./views/edit_entry_subject_view');
 

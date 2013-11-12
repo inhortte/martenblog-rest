@@ -39,14 +39,11 @@ Ember.Inflector.inflector.irregular('entry', 'entries');
 
 module.exports = App;
 
-},{"../vendor/ember":17,"../vendor/ember-data":16,"../vendor/handlebars":18,"../vendor/jquery":19,"./store":5}],4:[function(require,module,exports){
+},{"../vendor/ember":18,"../vendor/ember-data":17,"../vendor/handlebars":19,"../vendor/jquery":20,"./store":5}],4:[function(require,module,exports){
 var App = require('./app');
 
 App.Router.map(function() {
-  // this.resource('topics', {path: '/topics'}, function() {
-  //  this.route('all');
-  // });
-  // this.resource('topics', {path: '/topics'});
+
   this.resource('entries', {path: '/entries'});
   this.resource('entry', {path: '/entries/:entry_id'});
 });
@@ -80,7 +77,6 @@ module.exports = EntriesController;
 var TopicsController = Ember.ArrayController.extend({
   buttock: "Topics, vole",
   all_topics: function() {
-    console.log('entering model in topics_controller');
     return this.store.find('topic');
   }.property('model', 'App.Topic.@each')
 });
@@ -104,6 +100,7 @@ App.Thurk = require('./models/thurk');
 App.Topic = require('./models/topic');
 App.EntriesRoute = require('./routes/entries_route');
 App.EntryRoute = require('./routes/entry_route');
+App.IndexRoute = require('./routes/index_route');
 App.TopicsRoute = require('./routes/topics_route');
 App.EditEntrySubjectView = require('./views/edit_entry_subject_view');
 
@@ -112,7 +109,7 @@ require('./config/routes');
 module.exports = App;
 
 
-},{"./components/marten_entry_component":1,"./components/marten_topic_component":2,"./config/app":3,"./config/routes":4,"./controllers/entries_controller":6,"./controllers/topics_controller":7,"./models/entry":9,"./models/thurk":10,"./models/topic":11,"./routes/entries_route":12,"./routes/entry_route":13,"./routes/topics_route":14,"./templates":15,"./views/edit_entry_subject_view":20}],9:[function(require,module,exports){
+},{"./components/marten_entry_component":1,"./components/marten_topic_component":2,"./config/app":3,"./config/routes":4,"./controllers/entries_controller":6,"./controllers/topics_controller":7,"./models/entry":9,"./models/thurk":10,"./models/topic":11,"./routes/entries_route":12,"./routes/entry_route":13,"./routes/index_route":14,"./routes/topics_route":15,"./templates":16,"./views/edit_entry_subject_view":21}],9:[function(require,module,exports){
 var Entry = DS.Model.extend({
   created_at: DS.attr('number'),
   subject: DS.attr('string'),
@@ -197,6 +194,15 @@ var EntryRoute = Ember.Route.extend({
 module.exports = EntryRoute;
 
 },{}],14:[function(require,module,exports){
+var IndexRoute = Ember.Route.extend({
+  redirect: function() {
+    this.transitionTo('entries');
+  }
+});
+
+module.exports = IndexRoute;
+
+},{}],15:[function(require,module,exports){
 var TopicsRoute = Ember.Route.extend({
   /*
   setupController: function(controller, model) {
@@ -216,7 +222,7 @@ var TopicsRoute = Ember.Route.extend({
 
 module.exports = TopicsRoute;
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 
 Ember.TEMPLATES['application'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
@@ -336,68 +342,6 @@ function program1(depth0,data) {
   stack1 = helpers.each.call(depth0, "all_topics", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n</ul>\n");
-  return buffer;
-  
-});
-
-Ember.TEMPLATES['topics/all'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
-
-function program1(depth0,data) {
-  
-  var buffer = '', stack1, hashContexts, hashTypes, options;
-  data.buffer.push("\n    ");
-  hashContexts = {'topic': depth0,'entryCount': depth0,'id': depth0};
-  hashTypes = {'topic': "ID",'entryCount': "ID",'id': "ID"};
-  options = {hash:{
-    'topic': ("topic"),
-    'entryCount': ("entryCount"),
-    'id': ("id")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers['marten-topic'] || depth0['marten-topic']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "marten-topic", options))));
-  data.buffer.push("\n  ");
-  return buffer;
-  }
-
-  data.buffer.push("  ");
-  hashTypes = {};
-  hashContexts = {};
-  stack1 = helpers.each.call(depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n");
-  return buffer;
-  
-});
-
-Ember.TEMPLATES['topics/index'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
-
-function program1(depth0,data) {
-  
-  var buffer = '', stack1, hashContexts, hashTypes, options;
-  data.buffer.push("\n    ");
-  hashContexts = {'topic': depth0,'entryCount': depth0,'id': depth0};
-  hashTypes = {'topic': "ID",'entryCount': "ID",'id': "ID"};
-  options = {hash:{
-    'topic': ("topic"),
-    'entryCount': ("entryCount"),
-    'id': ("id")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers['marten-topic'] || depth0['marten-topic']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "marten-topic", options))));
-  data.buffer.push("\n  ");
-  return buffer;
-  }
-
-  data.buffer.push("  ");
-  hashTypes = {};
-  hashContexts = {};
-  stack1 = helpers.each.call(depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n");
   return buffer;
   
 });
@@ -535,7 +479,7 @@ function program1(depth0,data) {
 
 
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 // ==========================================================================
 // Project:   Ember Data
 // Copyright: ©2011-2012 Tilde Inc. and contributors.
@@ -8642,7 +8586,7 @@ Ember.onLoad('Ember.Application', function(Application) {
 
 })();
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 // Version: v1.0.0
 // Last commit: e2ea0cf (2013-08-31 23:47:39 -0700)
 
@@ -45114,7 +45058,7 @@ Ember.State = generateRemovedClass("Ember.State");
 
 })();
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /*
 
 Copyright (C) 2011 by Yehuda Katz
@@ -45478,7 +45422,7 @@ Handlebars.template = Handlebars.VM.template;
 })(Handlebars);
 ;
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.9.1
  * http://jquery.com/
@@ -55076,7 +55020,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }
 
 })( window );
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 App.EditEntrySubjectView = Ember.TextField.extend({
   didInsertElement: function() {
     this.$().focus();

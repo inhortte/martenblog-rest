@@ -121,68 +121,6 @@ function program1(depth0,data) {
   
 });
 
-Ember.TEMPLATES['topics/all'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
-
-function program1(depth0,data) {
-  
-  var buffer = '', stack1, hashContexts, hashTypes, options;
-  data.buffer.push("\n    ");
-  hashContexts = {'topic': depth0,'entryCount': depth0,'id': depth0};
-  hashTypes = {'topic': "ID",'entryCount': "ID",'id': "ID"};
-  options = {hash:{
-    'topic': ("topic"),
-    'entryCount': ("entryCount"),
-    'id': ("id")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers['marten-topic'] || depth0['marten-topic']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "marten-topic", options))));
-  data.buffer.push("\n  ");
-  return buffer;
-  }
-
-  data.buffer.push("  ");
-  hashTypes = {};
-  hashContexts = {};
-  stack1 = helpers.each.call(depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n");
-  return buffer;
-  
-});
-
-Ember.TEMPLATES['topics/index'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
-
-function program1(depth0,data) {
-  
-  var buffer = '', stack1, hashContexts, hashTypes, options;
-  data.buffer.push("\n    ");
-  hashContexts = {'topic': depth0,'entryCount': depth0,'id': depth0};
-  hashTypes = {'topic': "ID",'entryCount': "ID",'id': "ID"};
-  options = {hash:{
-    'topic': ("topic"),
-    'entryCount': ("entryCount"),
-    'id': ("id")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers['marten-topic'] || depth0['marten-topic']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "marten-topic", options))));
-  data.buffer.push("\n  ");
-  return buffer;
-  }
-
-  data.buffer.push("  ");
-  hashTypes = {};
-  hashContexts = {};
-  stack1 = helpers.each.call(depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n");
-  return buffer;
-  
-});
-
 Ember.TEMPLATES['components/marten-entry'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
