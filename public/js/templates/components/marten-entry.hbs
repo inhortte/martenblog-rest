@@ -1,7 +1,9 @@
   <article class="entry">
     <div class="timestamp">{{created_at}}</div>
-    <div class="subject">{{subject}}</div>
-    <div class="topics">Topics: {{topics}}</div>
+    <div class="subject">
+      {{#link-to 'entry' id}}{{subject}}{{/link-to}}
+    </div>
+    <div class="topics">Topics: {{topicList}}</div>
     <div class="entry">
       {{#if bloated}}
         {{{entry}}}
