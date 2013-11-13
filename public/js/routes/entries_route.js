@@ -1,6 +1,6 @@
 var EntriesRoute = Ember.Route.extend({
-  model: function() {
-    return this.store.find('entry');
+  model: function(params) {
+    return this.store.find('entry', {pagina: params.pagina});
   }
 });
 

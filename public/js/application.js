@@ -34,51 +34,73 @@ require('../vendor/ember-data'); // delete if you don't want ember-data
 var App = Ember.Application.create({
   LOG_TRANSITIONS: true
 });
-App.Store = require('./store'); // delete if you don't want ember-data
+
+App.ApplicationAdapter = DS.RESTAdapter.extend({
+  find: function(store, type, id) {
+    console.log('(find) type.typeKey: ' + type.typeKey);
+    return this.ajax(this.buildURL(type.typeKey, id), 'GET');
+  },
+  findAll: function(store, type, sinceToken) {
+    console.log('(findAll) type.typeKey: ' + type.typeKey);
+    var query;
+    if(sinceToken) { query = { since: sinceToken}; }
+    var url;
+    return this.ajax(this.buildURL(type.typeKey), 'GET', { data: query });
+  },
+  findQuery: function(store, type, query) {
+    console.log('(findQuery) type.typeKey: ' + type.typeKey);
+    console.log('(findQuery) query: ' + query.pagina);
+    var url;
+    if(type.typeKey === 'entry') {
+      url = '/' + query.pagina + '/entries';
+      console.log('find url: ' + url);
+      return this.ajax(url, 'GET');
+    } else {
+      url = this.buildURL(type.typeKey);
+      return this.ajax(url, 'GET', { data: query });
+    }
+  }
+});
+
+// App.Store = require('./store'); // delete if you don't want ember-data
 Ember.Inflector.inflector.irregular('entry', 'entries');
+Ember.Inflector.inflector.uncountable('entry_count');
 
 module.exports = App;
 
-},{"../vendor/ember":18,"../vendor/ember-data":17,"../vendor/handlebars":19,"../vendor/jquery":20,"./store":5}],4:[function(require,module,exports){
+},{"../vendor/ember":19,"../vendor/ember-data":18,"../vendor/handlebars":20,"../vendor/jquery":21}],4:[function(require,module,exports){
 var App = require('./app');
 
 App.Router.map(function() {
 //  this.resource('entries', {path: '/entries'}, function() {
 //    this.resource('entry', {path: '/:entry_id'});
 //  });
-  this.resource('entries');
-  this.resource('entry', {path: '/entries/:entry_id'});
+  this.resource('entries', {path: '/:pagina/entries'});
+  this.resource('entry', {path: '/entry/:entry_id'});
+  this.resource('entry_count');
 });
 
 },{"./app":3}],5:[function(require,module,exports){
-// by default, persist application data to localStorage.
-// require('../vendor/localstorage_adapter');
-
-/*
-module.exports = DS.Store.extend({
-  revision: 11,
-  //adapter: DS.RESTAdapter.create()
-  adapter: DS.LSAdapter.create()
-});
-*/
-
-module.exports = DS.Store.extend({
-  // adapter: DS.FixtureAdapter.create()
-//  adapter: DS.RESTAdapter.create()
-});
-
-},{}],6:[function(require,module,exports){
 var EntriesController = Ember.ArrayController.extend({
 });
 
 module.exports = EntriesController;
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 var EntryController = Ember.ObjectController.extend({
   buttock: "Grimy!",
 });
 
 module.exports = EntryController;
+
+},{}],7:[function(require,module,exports){
+var EntryCountController = Ember.ObjectController.extend({
+  counts: function() {
+    return this.store.find('entry_count');
+  }.property('model', 'App.EntryCount')
+});
+
+module.exports = EntryCountController;
 
 },{}],8:[function(require,module,exports){
 var TopicsController = Ember.ArrayController.extend({
@@ -102,8 +124,10 @@ App.MartenEntryComponent = require('./components/marten_entry_component');
 App.MartenTopicComponent = require('./components/marten_topic_component');
 App.EntriesController = require('./controllers/entries_controller');
 App.EntryController = require('./controllers/entry_controller');
+App.EntryCountController = require('./controllers/entry_count_controller');
 App.TopicsController = require('./controllers/topics_controller');
 App.Entry = require('./models/entry');
+App.EntryCount = require('./models/entry_count');
 App.Topic = require('./models/topic');
 App.EntriesRoute = require('./routes/entries_route');
 App.EntryRoute = require('./routes/entry_route');
@@ -116,7 +140,7 @@ require('./config/routes');
 module.exports = App;
 
 
-},{"./components/marten_entry_component":1,"./components/marten_topic_component":2,"./config/app":3,"./config/routes":4,"./controllers/entries_controller":6,"./controllers/entry_controller":7,"./controllers/topics_controller":8,"./models/entry":10,"./models/topic":11,"./routes/entries_route":12,"./routes/entry_route":13,"./routes/index_route":14,"./routes/topics_route":15,"./templates":16,"./views/edit_entry_subject_view":21}],10:[function(require,module,exports){
+},{"./components/marten_entry_component":1,"./components/marten_topic_component":2,"./config/app":3,"./config/routes":4,"./controllers/entries_controller":5,"./controllers/entry_controller":6,"./controllers/entry_count_controller":7,"./controllers/topics_controller":8,"./models/entry":10,"./models/entry_count":11,"./models/topic":12,"./routes/entries_route":13,"./routes/entry_route":14,"./routes/index_route":15,"./routes/topics_route":16,"./templates":17,"./views/edit_entry_subject_view":22}],10:[function(require,module,exports){
 var Entry = DS.Model.extend({
   created_at: DS.attr('number'),
   subject: DS.attr('string'),
@@ -129,6 +153,13 @@ var Entry = DS.Model.extend({
 module.exports = Entry;
 
 },{}],11:[function(require,module,exports){
+var EntryCount = DS.Model.extend({
+  entryCount: DS.attr('string')
+});
+
+module.exports = EntryCount;
+
+},{}],12:[function(require,module,exports){
 var Topic = DS.Model.extend({
   topic: DS.attr('string'),
   entryCount: DS.attr('number'),
@@ -137,16 +168,16 @@ var Topic = DS.Model.extend({
 
 module.exports = Topic;
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var EntriesRoute = Ember.Route.extend({
-  model: function() {
-    return this.store.find('entry');
+  model: function(params) {
+    return this.store.find('entry', {pagina: params.pagina});
   }
 });
 
 module.exports = EntriesRoute;
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var EntryRoute = Ember.Route.extend({
   setupController: function(controller, entry) {
     controller.set('model', entry);
@@ -155,27 +186,17 @@ var EntryRoute = Ember.Route.extend({
 
 module.exports = EntryRoute;
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 var IndexRoute = Ember.Route.extend({
   redirect: function() {
-    this.transitionTo('entries');
+    this.transitionTo('entries', 1);
   }
 });
 
 module.exports = IndexRoute;
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 var TopicsRoute = Ember.Route.extend({
-  /*
-  setupController: function(controller, model) {
-    console.log('TopicsRoute setupController function called...');
-    controller.set('model', this.store.find('topic'));
-  },
-  renderTemplate: function(controller, context) {
-    this._super(controller, context);
-    this.render('topics');
-  }
-  */
   model: function() {
     console.log(JSON.stringify(App.Router.router.recognizer.names));
     return this.store.find('topic');
@@ -184,7 +205,7 @@ var TopicsRoute = Ember.Route.extend({
 
 module.exports = TopicsRoute;
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 
 Ember.TEMPLATES['application'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
@@ -209,16 +230,12 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 Ember.TEMPLATES['entries'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
-  var buffer = '', stack1, hashTypes, hashContexts, options;
-  data.buffer.push("\n              <div>Zadek:  ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "buttock", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</div>\n              ");
+  var buffer = '', stack1, hashContexts, hashTypes, options;
+  data.buffer.push("\n              ");
   hashContexts = {'created_at': depth0,'truncated': depth0,'entry': depth0,'subject': depth0,'topicList': depth0,'id': depth0};
   hashTypes = {'created_at': "ID",'truncated': "ID",'entry': "ID",'subject': "ID",'topicList': "ID",'id': "ID"};
   options = {hash:{
@@ -234,11 +251,16 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("          <div id=\"pagination\">\n            <span class=\"pagelink\">1</span>\n            <span class=\"pagelink\">2</span>\n            <span class=\"pagelink\">3</span>\n            <span class=\"pagelink\">4</span>\n            ...\n            <span class=\"pagelink\">next</span>\n          </div>\n\n          <section id=\"entries\">\n            ");
+  data.buffer.push("          <div id=\"pagination\">\n            ");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers.each.call(depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  options = {hash:{},contexts:[depth0,depth0],types:["STRING","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.render || depth0.render),stack1 ? stack1.call(depth0, "entry_count", "entry_count", options) : helperMissing.call(depth0, "render", "entry_count", "entry_count", options))));
+  data.buffer.push("\n          </div>\n\n          <section id=\"entries\">\n            ");
+  hashTypes = {};
+  hashContexts = {};
+  stack2 = helpers.each.call(depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n          </section>\n");
   return buffer;
   
@@ -254,11 +276,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "id", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\" class=\"full-entry\">\n  <div>Zadek: ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "buttock", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</div>\n  <div class=\"timestamp\">");
+  data.buffer.push("\" class=\"full-entry\">\n  <div class=\"timestamp\">");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "created_at", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
@@ -278,6 +296,34 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n  </div>\n</article>\n");
+  return buffer;
+  
+});
+
+Ember.TEMPLATES['entry_count'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, hashTypes, hashContexts, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = '', stack1, hashContexts, hashTypes;
+  data.buffer.push("\n  <span>");
+  hashContexts = {'unescaped': depth0};
+  hashTypes = {'unescaped': "STRING"};
+  stack1 = helpers._triageMustache.call(depth0, "entryCount", {hash:{
+    'unescaped': ("true")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</span>\n");
+  return buffer;
+  }
+
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers.each.call(depth0, "counts", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n");
   return buffer;
   
 });
@@ -460,7 +506,7 @@ function program1(depth0,data) {
 
 
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 // ==========================================================================
 // Project:   Ember Data
 // Copyright: ©2011-2012 Tilde Inc. and contributors.
@@ -8567,7 +8613,7 @@ Ember.onLoad('Ember.Application', function(Application) {
 
 })();
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 // Version: v1.0.0
 // Last commit: e2ea0cf (2013-08-31 23:47:39 -0700)
 
@@ -45039,7 +45085,7 @@ Ember.State = generateRemovedClass("Ember.State");
 
 })();
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 /*
 
 Copyright (C) 2011 by Yehuda Katz
@@ -45403,7 +45449,7 @@ Handlebars.template = Handlebars.VM.template;
 })(Handlebars);
 ;
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.9.1
  * http://jquery.com/
@@ -55001,7 +55047,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }
 
 })( window );
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 App.EditEntrySubjectView = Ember.TextField.extend({
   didInsertElement: function() {
     this.$().focus();

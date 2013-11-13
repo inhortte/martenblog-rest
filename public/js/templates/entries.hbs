@@ -1,15 +1,9 @@
           <div id="pagination">
-            <span class="pagelink">1</span>
-            <span class="pagelink">2</span>
-            <span class="pagelink">3</span>
-            <span class="pagelink">4</span>
-            ...
-            <span class="pagelink">next</span>
+            {{render "entry_count" entry_count}}
           </div>
 
           <section id="entries">
             {{#each}}
-              <div>Zadek:  {{buttock}}</div>
               {{marten-entry created_at=created_at truncated=truncated entry=entry subject=subject topicList=topicList id=id}}
             {{/each}}
           </section>
