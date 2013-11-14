@@ -1,8 +1,8 @@
 <article id="entry_{{id}}" class="full-entry">
-  <div class="timestamp">{{created_at}}</div>
+  <div class="timestamp small">{{formatDate created_at}}</div>
   <div class="subject">{{subject}}</div>
-  <div class="topics">Topics: {{topicList}}</div>
-  <div class="entry">
+  <div class="topics small"><strong>Topics</strong>: {{topicList}}</div>
+  <div class="actual-entry">
     {{{entry}}}
   </div>
 </article>

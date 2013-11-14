@@ -3,6 +3,7 @@
 
 var App = window.App = require('./config/app');
 require('./templates');
+require('./helpers/format_date');
 
 
 App.MartenEntryComponent = require('./components/marten_entry_component');

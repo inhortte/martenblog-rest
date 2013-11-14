@@ -1,10 +1,10 @@
   <article class="entry">
-    <div class="timestamp">{{created_at}}</div>
+    <div class="timestamp small">{{formatDate created_at}}</div>
     <div class="subject">
-      {{#link-to 'entry' id}}{{subject}}{{/link-to}}
+      {{#link-to 'entry' lepra}}{{subject}}{{/link-to}}
     </div>
-    <div class="topics">Topics: {{topicList}}</div>
-    <div class="entry">
+    <div class="topics small"><strong>Topics</strong>: {{topicList}}</div>
+    <div class="actual-entry">
       {{#if bloated}}
         {{{entry}}}
       {{else}}
@@ -12,9 +12,9 @@
       {{/if}}
     </div>
     {{#if bloated}}
-      <button {{action 'bloat'}}>contract</button>
+      <button type="button" class="btn btn-primary btn-xs" {{action 'bloat'}}>contract</button>
     {{else}}
-      <button {{action 'bloat'}}>expand</button>
+      <button type="button" class="btn btn-info btn-xs" {{action 'bloat'}}>expand</button>
     {{/if}}
   </article>
   <hr />
