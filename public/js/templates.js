@@ -5,16 +5,16 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, hashTypes, hashContexts, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
-  data.buffer.push("  <div id=\"martenblog\" class=\"container\">\n    <div id=\"header\" class=\"row\">\n      <span id=\"bollocks\" class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\n        <img src=\"images/gretel.jpg\" alt=\"Gretel\" class=\"col-xs-2 col-sm-2 img-rounded\"/>\n        <span class=\"col-xs-8 col-sm-4\"></span>\n        <span id=\"title\" class=\"col-xs-2 col-sm-2\">Martenblog</span>\n      </span>\n    </div>\n    <div id=\"hlavni\" class=\"row\">\n      <section id=\"rutabaga\" class=\"col-xs-8 col-sm-6 col-sm-offset-2\">\n        ");
+  data.buffer.push("  <div id=\"martenblog\" class=\"container\">\n    <div class=\"row\">\n      <div id=\"header\" class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\n        <div class=\"row\">\n          <div id=\"bollocks\" class=\"col-xs-12\">\n            <img src=\"images/gretel.jpg\" alt=\"Gretel\" class=\"col-xs-2 col-sm-2 img-rounded\"/>\n            <span id=\"title\" class=\"col-xs-2 col-sm-2 col-sm-offset-4\">Martenblog</span>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div id=\"hlavni\" class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\n        <div class=\"row\">\n          <div id=\"rutabaga\" class=\"col-xs-8 col-sm-8\">\n            ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n      </section>\n      <section id=\"sidebar\" class=\"col-xs-4 col-sm-2\">\n        <div id=\"pointless-photo\">\n          <img src=\"images/mustelid.jpg\" class=\"img-rounded\" />\n        </div>\n        <div id=\"calendar\">\n          A calendar goes here\n        </div>\n        <section id=\"topics\" class=\"scroll\">\n          ");
+  data.buffer.push("\n          </div>\n          <div id=\"sidebar\" class=\"col-xs-4 col-sm-4\">\n            <div id=\"pointless-photo\">\n              <img src=\"images/mustelid.jpg\" class=\"img-rounded\" />\n            </div>\n            <div id=\"calendar\">\n              A calendar goes here\n            </div>\n            <div id=\"topics\" class=\"scroll\">\n              ");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0,depth0],types:["ID","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.render || depth0.render),stack1 ? stack1.call(depth0, "topics", "topics", options) : helperMissing.call(depth0, "render", "topics", "topics", options))));
-  data.buffer.push("\n        </section>\n      </section>\n    </div>\n    <div class=\"row\">\n      <div id=\"footer\" class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\n        <p class=\"text-center small\">\n          (c) 2013 Bob Shelton\n        </span>\n      </div>\n    </div>\n  </div>\n");
+  data.buffer.push("\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div id=\"footer\" class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\n        <div id=\"shameless\">\n          <a href=\"http://nodejs.org\"><img id=\"node\" src=\"images/nodejs-green.png\" /></a>\n          <a href=\"http://emberjs.com\"><img id=\"ember\" src=\"images/emberjs-logo.png\" /></a>\n        </div>\n        <p class=\"text-right small\">\n          (c) 2013 Bob Shelton\n        </span>\n      </div>\n    </div>\n  </div>\n");
   return buffer;
   
 });
@@ -112,7 +112,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("<ul class=\"pagination pagination-sm\">\n  <li><span class=\"glyphicon glyphicon-glass\"></span></li>\n  ");
+  data.buffer.push("<ul class=\"pagination pagination-sm\">\n  ");
   hashTypes = {};
   hashContexts = {};
   stack1 = helpers.each.call(depth0, "counts", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
@@ -260,7 +260,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'href': ("#")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
-  data.buffer.push(">");
+  data.buffer.push(" >");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "topic", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));

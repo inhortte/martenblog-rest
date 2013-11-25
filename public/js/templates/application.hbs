@@ -1,30 +1,41 @@
   <div id="martenblog" class="container">
-    <div id="header" class="row">
-      <span id="bollocks" class="col-xs-12 col-sm-8 col-sm-offset-2">
-        <img src="images/gretel.jpg" alt="Gretel" class="col-xs-2 col-sm-2 img-rounded"/>
-        <span class="col-xs-8 col-sm-4"></span>
-        <span id="title" class="col-xs-2 col-sm-2">Martenblog</span>
-      </span>
+    <div class="row">
+      <div id="header" class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="row">
+          <div id="bollocks" class="col-xs-12">
+            <img src="images/gretel.jpg" alt="Gretel" class="col-xs-2 col-sm-2 img-rounded"/>
+            <span id="title" class="col-xs-2 col-sm-2 col-sm-offset-4">Martenblog</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="hlavni" class="row">
-      <section id="rutabaga" class="col-xs-8 col-sm-6 col-sm-offset-2">
-        {{outlet}}
-      </section>
-      <section id="sidebar" class="col-xs-4 col-sm-2">
-        <div id="pointless-photo">
-          <img src="images/mustelid.jpg" class="img-rounded" />
+    <div class="row">
+      <div id="hlavni" class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="row">
+          <div id="rutabaga" class="col-xs-8 col-sm-8">
+            {{outlet}}
+          </div>
+          <div id="sidebar" class="col-xs-4 col-sm-4">
+            <div id="pointless-photo">
+              <img src="images/mustelid.jpg" class="img-rounded" />
+            </div>
+            <div id="calendar">
+              A calendar goes here
+            </div>
+            <div id="topics" class="scroll">
+              {{render topics topics}}
+            </div>
+          </div>
         </div>
-        <div id="calendar">
-          A calendar goes here
-        </div>
-        <section id="topics" class="scroll">
-          {{render topics topics}}
-        </section>
-      </section>
+      </div>
     </div>
     <div class="row">
       <div id="footer" class="col-xs-12 col-sm-8 col-sm-offset-2">
-        <p class="text-center small">
+        <div id="shameless">
+          <a href="http://nodejs.org"><img id="node" src="images/nodejs-green.png" /></a>
+          <a href="http://emberjs.com"><img id="ember" src="images/emberjs-logo.png" /></a>
+        </div>
+        <p class="text-right small">
           (c) 2013 Bob Shelton
         </span>
       </div>

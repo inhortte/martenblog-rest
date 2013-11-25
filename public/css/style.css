@@ -31,11 +31,6 @@ button {
 */
 
 #header {
-//    float: left;
-//    width: 75%;
-//    padding-top: 5px;
-//    padding-bottom: 5px;
-//    border-radius: inherit;
 }
 
 #bollocks:before {
@@ -77,6 +72,8 @@ button {
 }
 
 #hlavni {
+    background: #223322;
+//    border-bottom: #eee solid 1px;
 }
 
 #rutabaga, #sidebar {
@@ -85,15 +82,15 @@ button {
 }
 
 #rutabaga {
-    border-left: #ccc solid 1px;
-    border-top: #ccc solid 1px;
-    border-bottom: #ccc solid 1px;
+//    border-left: #ccc solid 1px;
+//    border-top: #ccc solid 1px;
+//    border-bottom: #ccc solid 1px;
 }
 
 #sidebar {
-    border-right: #ccc solid 1px;
-    border-top: #ccc solid 1px;
-    border-bottom: #ccc solid 1px;
+//    border-right: #ccc solid 1px;
+//    border-top: #ccc solid 1px;
+//    border-bottom: #ccc solid 1px;
 }
 
 .entry .timestamp, .full-entry .timestamp {
@@ -141,8 +138,22 @@ button {
 }
 */
 
-#footer {
-    border-top: #eee solid 1px;
+#footer #shameless {
+    margin-left: -15px;
+}
+
+#footer img#node {
+    width: 50px;
+    float: left;
+}
+
+#footer img#ember{
+    width: 60px;
+    float: left;
+}
+
+#footer p {
+    padding-top: 5px;
 }
 
 .hidden{
