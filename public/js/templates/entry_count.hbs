@@ -1,5 +1,7 @@
-{{#if view.thurk.isPending}}
-  {{view.pending}}
-{{else}}
-  {{{view.fulfilled}}}
-{{/if}}
+<ul class="pagination pagination-sm">
+  {{#if view.thurk.isPending}}
+    {{view.pending}}
+  {{else}}
+    {{{view.fulfilled}}}
+  {{/if}}
+</ul>
