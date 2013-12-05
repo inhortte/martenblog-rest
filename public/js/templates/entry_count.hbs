@@ -1,6 +1,5 @@
-{{view.thurk}}
-<ul class="pagination pagination-sm">
-  {{#each counts}}
-    {{{entryCount}}}
-  {{/each}}
-</ul>
+{{#if view.thurk.isPending}}
+  {{view.pending}}
+{{else}}
+  {{{view.fulfilled}}}
+{{/if}}
