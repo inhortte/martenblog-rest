@@ -117,10 +117,13 @@ var EntryCountController = Ember.ObjectController.extend({
   counts: function() {
     var re = /\#\/(\d+)\//;
     var res = re.exec(window.location.href);
+    /*
     this.store.find('entry_count', { pagina: res[1] }).then(function(ecs) {
       console.log(JSON.stringify(ecs));
       return(ecs);
     });
+     */
+    return this.store.find('entry_count', { pagina: res[1] });
   }.property('model', 'App.EntryCount')
 });
 
@@ -164,13 +167,14 @@ App.EntryRoute = require('./routes/entry_route');
 App.IndexRoute = require('./routes/index_route');
 App.TopicsRoute = require('./routes/topics_route');
 App.EditEntrySubjectView = require('./views/edit_entry_subject_view');
+App.EntryCountView = require('./views/entry_count_view');
 
 require('./config/routes');
 
 module.exports = App;
 
 
-},{"./components/marten_entry_component":1,"./components/marten_topic_component":2,"./config/app":3,"./config/routes":4,"./controllers/entries_controller":5,"./controllers/entry_controller":6,"./controllers/entry_count_controller":7,"./controllers/topics_controller":8,"./helpers/format_date":9,"./models/entry":11,"./models/entry_count":12,"./models/topic":13,"./routes/entries_route":14,"./routes/entry_route":15,"./routes/index_route":16,"./routes/topics_route":17,"./templates":18,"./views/edit_entry_subject_view":25}],11:[function(require,module,exports){
+},{"./components/marten_entry_component":1,"./components/marten_topic_component":2,"./config/app":3,"./config/routes":4,"./controllers/entries_controller":5,"./controllers/entry_controller":6,"./controllers/entry_count_controller":7,"./controllers/topics_controller":8,"./helpers/format_date":9,"./models/entry":11,"./models/entry_count":12,"./models/topic":13,"./routes/entries_route":14,"./routes/entry_route":15,"./routes/index_route":16,"./routes/topics_route":17,"./templates":18,"./views/edit_entry_subject_view":25,"./views/entry_count_view":26}],11:[function(require,module,exports){
 var Entry = DS.Model.extend({
   created_at: DS.attr('number'),
   subject: DS.attr('string'),
@@ -335,7 +339,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 Ember.TEMPLATES['entry_count'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, self=this;
+  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
@@ -351,7 +355,10 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("<ul class=\"pagination pagination-sm\">\n  ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "view.thurk", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n<ul class=\"pagination pagination-sm\">\n  ");
   hashTypes = {};
   hashContexts = {};
   stack1 = helpers.each.call(depth0, "counts", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
@@ -64647,6 +64654,13 @@ App.EditEntrySubjectView = Ember.TextField.extend({
 });
 
 Ember.Handlebars.helper('edit-entry-subject', App.EditEntrySubjectView);
+
+},{}],26:[function(require,module,exports){
+var EntryCountView = Ember.View.extend({
+  thurk: 'counts'
+});
+
+module.exports = EntryCountView;
 
 },{}]},{},[10])
 ;
