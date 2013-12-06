@@ -1,11 +1,8 @@
 var EntryCountController = Ember.ObjectController.extend({
-  pagina: function() {
+  counts: function() {
     var re = /\#\/(\d+)\//;
     var res = re.exec(window.location.href);
-    return res[1];
-  },
-  counts: function() {
-    var promisearray = this.store.find('entry_count', { pagina: this.pagina });
+    var promisearray = this.store.find('entry_count', { pagina: res[1] });
     return promisearray;
   }.property(),
   pending: function() {
