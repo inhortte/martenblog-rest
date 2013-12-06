@@ -10,9 +10,8 @@ var EntryCountView = Ember.View.extend({
   fulfilled: function() {
     console.log('am i fulfilled? ' + this.controller.get('counts').get('isFulfilled'));
     var ecs = this.controller.get('counts').map(function(ec) {
-      return {id: ec.get('id'), entryCount: ec.get('entryCount')};
+      return {id: ec.get('id'), entryCount: ec.get('entryCount'), hasChanged: ec.get('hasChanged')};
     });
-    console.log('what have we, then? ' + JSON.stringify(parseInt(ecs[0].entryCount)));
 
     var re = /\#\/(\d+)\//;
     var res = re.exec(window.location.href);
@@ -37,7 +36,12 @@ var EntryCountView = Ember.View.extend({
     }
 
     return pages.join('');
-  }.property()
+  }.property(),
+  click: function(evt) {
+  },
+  needToRefresh: function() {
+//    alert('changed!');
+  }.observes('this.controller.hasChanged')
 });
 
 module.exports = EntryCountView;
