@@ -110,6 +110,11 @@ button {
     padding-bottom: 5px;
 }
 
+#topic-filter {
+    margin-bottom: 10px;
+    font-size: smaller;
+}
+
 .scroll {
    height: 600px;
    overflow: scroll;

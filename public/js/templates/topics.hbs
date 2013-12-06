@@ -1,5 +1,17 @@
+{{#if areTopicFilters}}
+<div id="topic-filter">
+  Topic filters:
+  {{#each getTopicFilters}}
+    <a {{bind-attr href='#'}} {{action 'removeTopicFilter' id}}>{{topic}}</a>
+  {{/each}}
+</div>
+{{/if}}
+
 <ul class="list-group list-unstyled">
   {{#each all_topics}}
-    {{marten-topic topic=topic entryCount=entryCount id=id}}
+    <li class="clear list-group-item">
+      <span class="badge">{{entryCount}}</span>
+      <a {{bind-attr href="#"}} {{action 'addTopicFilter' id}}>{{topic}}</a>
+    </li>
   {{/each}}
 </ul>

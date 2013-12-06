@@ -2,8 +2,8 @@ var MartenTopicComponent = Ember.Component.extend({
   tagName: 'li',
   classNames: ['clear'],
   actions: {
-    showId: function() {
-      this.toggleProperty('isShowingId');
+    addTopicFilter: function(id) {
+      console.log('um.... ' + this.controller);
     }
   }
 });
