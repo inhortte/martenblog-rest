@@ -1,7 +1,15 @@
 var TopicsRoute = Ember.Route.extend({
-  model: function() {
-    console.log(JSON.stringify(App.Router.router.recognizer.names));
+  /*
+    model: function() {
     return this.store.find('topic');
+  },
+  setupController: function(controller, model) {
+    controller.set('model', model);
+    console.log('TopicsRoute - controller set.');
+  },
+   */
+  renderTemplate: function() {
+    this.render({outlet: 'topics'});
   }
 });
 
