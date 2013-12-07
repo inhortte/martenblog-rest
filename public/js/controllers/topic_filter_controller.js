@@ -1,13 +1,13 @@
-var TopicFilterController = Ember.Controller.extend({
+var TopicFilterController = Ember.ObjectController.extend({
   topicFilters: Ember.A([ ]),
   areTopicFilters: function() {
     console.log('topicFilters.length -> ' + this.topicFilters.length);
     return this.topicFilters.length > 0;
-  }.property(),
+  }.property('topicFilters'),
   getTopicFilters: function() {
     console.log('getTopicFilters....');
     return this.store.findByIds('topic', this.topicFilters);
-  }.property(),
+  }.property('topicFilters'),
   actions: {
     addTopicFilter: function(t) {
       if(this.topicFilters.indexOf(parseInt(t)) == -1) {
