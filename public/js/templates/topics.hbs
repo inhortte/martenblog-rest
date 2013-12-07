@@ -1,12 +1,3 @@
-{{#if areTopicFilters}}
-<div id="topic-filter">
-  Topic filters:
-  {{#each getTopicFilters}}
-    <a {{bind-attr href='#'}} {{action 'removeTopicFilter' id}}>{{topic}}</a>
-  {{/each}}
-</div>
-{{/if}}
-
 <ul class="list-group list-unstyled">
   {{#each all_topics}}
     <li class="clear list-group-item">
