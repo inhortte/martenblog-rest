@@ -6,8 +6,6 @@ var ApplicationRoute = Ember.Route.extend({
     this.render('topics', {outlet: 'topics', controller: topicsController, into: 'application'});
     this.render('topic_filter', {outlet: 'topic_filter', controller: topicFilterController, into: 'application'});
   },
-  actions: {
-  }
 });
 
 module.exports = ApplicationRoute;

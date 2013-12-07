@@ -32,8 +32,6 @@
     "mongojs": "*",
     "underscore-node": "*",
     "async": "*",
-    "convoy": "*",
-    "ember": "*",
     "showdown": "*",
     "html5-manifest": "git://github.com/charlesjolley/html5-manifest.git#master"
   },
