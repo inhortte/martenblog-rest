@@ -1,3 +1,5 @@
+// Currently unused (see ApplicationRoute)
+
 var TopicsRoute = Ember.Route.extend({
   /*
     model: function() {
