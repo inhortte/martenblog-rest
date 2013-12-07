@@ -3,7 +3,9 @@ var EntriesRoute = Ember.Route.extend({
     return this.store.find('entry', {pagina: params.pagina});
   },
   renderTemplate: function() {
-    this.render({outlet: 'rutabaga'});
+    var entryCountController = this.controllerFor('entry_count');
+    this.render({outlet: 'entries'});
+    this.render('entry_count', {outlet: 'entry_count', controller: entryCountController, into: 'entries'});
   }
 });
 

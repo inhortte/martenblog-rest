@@ -1,8 +1,8 @@
 var EntryCountView = Ember.View.extend({
   click: function(evt) {
-  },
-  needToRefresh: function() {
-  }.observes('this.controller.hasChanged')
+    this.rerender();
+  }
+
 });
 
 module.exports = EntryCountView;
