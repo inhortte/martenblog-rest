@@ -5,14 +5,15 @@ var ApplicationRoute = Ember.Route.extend({
     var topicFilterController = this.controllerFor('topic_filter');
     this.render('topics', {outlet: 'topics', controller: topicsController, into: 'application'});
     this.render('topic_filter', {outlet: 'topic_filter', controller: topicFilterController, into: 'application'});
+    console.log(JSON.stringify(Ember.ENV));
   },
   actions: {
     volver: function(tids) {
       console.log('volver -> ' + tids.join(','));
       if(tids.length == 0) {
-        this.transitionTo('entries');
+        this.transitionTo('entries', 1);
       } else {
-        this.transitionTo('topics', {queryParams: tids.join(',')});
+        this.transitionTo('entries', 1, {queryParams: {t: tids.join(',')}});
       }
     }
   }

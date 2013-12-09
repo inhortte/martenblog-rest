@@ -1,6 +1,7 @@
 var EntriesRoute = Ember.Route.extend({
-  model: function(params) {
-    return this.store.find('entry', {pagina: params.pagina});
+  model: function(params, queryParams) {
+    console.log('EntriesRoute model hook queryParams -> ' + JSON.stringify(queryParams.t));
+    return this.store.find('entry', {pagina: params.pagina, queryParams: queryParams});
   },
   renderTemplate: function() {
     var entryCountController = this.controllerFor('entry_count');

@@ -1,3 +1,5 @@
+ENV = {FEATURES: {"query-params": true}};
+
 // require other, dependencies here, ie:
 // require('./vendor/moment');
 
