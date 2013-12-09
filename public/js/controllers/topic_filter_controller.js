@@ -10,8 +10,9 @@ var TopicFilterController = Ember.ObjectController.extend({
       this.get('target').send('volver', tids);
     },
     removeTopicFilter: function(t) {
-      this.topicFilters.removeObject(t);
-      var tids = this.topicFilters.map(function(t) { return parseInt(t.id); });
+      var topicFilters = this.get('topicFilters');
+      topicFilters.removeObject(t);
+      var tids = topicFilters.map(function(t) { return parseInt(t.id); });
       this.get('target').send('volver', tids);
     }
   }
