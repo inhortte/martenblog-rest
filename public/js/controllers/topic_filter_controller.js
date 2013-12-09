@@ -6,11 +6,13 @@ var TopicFilterController = Ember.ObjectController.extend({
       if(!topicFilters.contains(t)) {
         topicFilters.pushObject(t);
       }
-      console.log('topicFilters -> ' + JSON.stringify(this.topicFilters));
+      var tids = this.topicFilters.map(function(t) { return parseInt(t.id); });
+      this.get('target').send('volver', tids);
     },
     removeTopicFilter: function(t) {
       this.topicFilters.removeObject(t);
-      console.log('topicFilters -> ' + JSON.stringify(this.topicFilters));
+      var tids = this.topicFilters.map(function(t) { return parseInt(t.id); });
+      this.get('target').send('volver', tids);
     }
   }
 });
