@@ -8,12 +8,8 @@ var ApplicationRoute = Ember.Route.extend({
   },
   actions: {
     volver: function(tids) {
-      console.log('volver -> ' + tids.join(','));
-      if(tids.length == 0) {
-        this.transitionTo('entries', 1, {queryParams: {}});
-      } else {
-        this.transitionTo('entries', 1, {queryParams: {t: tids.join(',')}});
-      }
+      console.log('volver -> ' + "__" + tids.join(',') + "__ yah " + JSON.stringify(tids));
+      this.transitionTo('entries', 1, {queryParams: {t: tids.join(',')}});
     }
   }
 });
