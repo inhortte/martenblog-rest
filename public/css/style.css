@@ -1,34 +1,10 @@
 html,
 body {
     background: #000;
+    font-family: Perpetua, Baskerville, "Big Caslon", "Palatino Linotype", Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif;
 //    margin-left: auto;
 //    margin-right: auto;
 }
-
-/*
-button {
-	margin: 0;
-	padding: 2;
-	border: 1;
-	background: none;
-	font-size: 100%;
-	vertical-align: baseline;
-	font-family: inherit;
-	color: inherit;
-	-webkit-appearance: none;
-	/*-moz-appearance: none;*/ /*
-	-ms-appearance: none;
-	-o-appearance: none;
-	appearance: none;
-}
-
-
-#martenblog {
-        background: #000;
-	margin: 40px 0 40px 0;
-//	position: relative;
-}
-*/
 
 #header {
 }
@@ -72,13 +48,21 @@ button {
 }
 
 #hlavni {
-    background: #223322;
+    background: #333333;
 //    border-bottom: #eee solid 1px;
 }
 
+#hlavni {
+}
+
+lockquote {
+    font-size: smaller;
+    color: grey;
+}
+
 #rutabaga, #sidebar {
-    background: #223322;
-    color: #afafaf;
+    background: #000000;
+    color: #6aef4a;
 }
 
 #rutabaga {
