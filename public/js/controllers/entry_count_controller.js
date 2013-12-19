@@ -1,8 +1,9 @@
 var EntryCountController = Ember.ObjectController.extend({
   counts: function() {
-    var re = /\#\/(\d+)\//;
-    var res = re.exec(window.location.href);
-    var promisearray = this.store.find('entry_count', { pagina: res[1] });
+    var re_t = /t=([\d,]+)$/;
+    var res_t = re_t.exec(window.location.href);
+    console.log('EntryCountController res_t -> ' + JSON.stringify(res_t));
+    var promisearray = this.store.find('entry_count', { ts: res_t && res_t[1] ? res_t[1] : null });
     return promisearray;
   }.property(),
   pending: function() {
@@ -15,9 +16,9 @@ var EntryCountController = Ember.ObjectController.extend({
       return {id: ec.get('id'), entryCount: ec.get('entryCount'), hasChanged: ec.get('hasChanged')};
     });
 
-    var re = /\#\/(\d+)\//;
-    var res = re.exec(window.location.href);
-    var pagina = parseInt(res[1]);
+    var re_pagina = /\#\/(\d+)\//;
+    var res_pagina = re_pagina.exec(window.location.href);
+    var pagina = parseInt(res_pagina[1]);
     var count = parseInt(ecs[0].entryCount);
     var pages = [];
     var lp = (count % 11 > 0) ? Math.floor(count / 11) + 1 : Math.floor(count / 11);
