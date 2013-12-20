@@ -25,7 +25,8 @@
     "node": "0.10.x"
   },
   "scripts": {
-    "test": "grunt nodeunit"
+    "test": "grunt nodeunit",
+    "start": "lib/martenblog-rest.js"
   },
   "dependencies": {
     "express": ">= 3.4.4",
@@ -41,5 +42,6 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.1"
   },
-  "keywords": []
+  "keywords": [],
+  "subdomain": "martenblog"
 }
