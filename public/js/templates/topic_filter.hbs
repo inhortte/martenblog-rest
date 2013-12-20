@@ -1,6 +1,7 @@
 {{#if topicFilters}}
   <strong>Topic filters:</strong>
   {{#each topicFilters}}
+    <strong>&gt;</strong>
     <a {{bind-attr href='#'}} {{action 'removeTopicFilter' this}}>{{topic}}</a>
   {{/each}}
 {{/if}}

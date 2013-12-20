@@ -52,12 +52,12 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
       if(query.t) {
         url += '?t=' + query.t;
       }
-      console.log('(findQuery) find url: ' + url);
+      // console.log('(findQuery) find url: ' + url);
       return this.ajax(url, 'GET');
     } else {
       url = this.buildURL(type.typeKey);
-      console.log('(findQuery) find url: ' + url);
-      console.log('data -> ' + JSON.stringify(query));
+      // console.log('(findQuery) find url: ' + url);
+      // console.log('data -> ' + JSON.stringify(query));
       return this.ajax(url, 'GET', { data: query });
     }
   }
