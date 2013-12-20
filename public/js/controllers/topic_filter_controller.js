@@ -1,24 +1,19 @@
 var TopicFilterController = Ember.ObjectController.extend({
-  topicFilters: Ember.A([ ]),
-  areTopicFilters: function() {
-    console.log('topicFilters.length -> ' + this.topicFilters.length);
-    return this.topicFilters.length > 0;
-  }.property('topicFilters'),
-  getTopicFilters: function() {
-    console.log('getTopicFilters....');
-    return this.store.findByIds('topic', this.topicFilters);
-  }.property('topicFilters'),
+  topicFilters: Ember.A(),
   actions: {
     addTopicFilter: function(t) {
-      if(this.topicFilters.indexOf(parseInt(t)) == -1) {
-        this.topicFilters.pushObject(parseInt(t));
+      var topicFilters = this.get('topicFilters');
+      if(!topicFilters.contains(t)) {
+        topicFilters.pushObject(t);
       }
-      // this.topicFilters.add(parseInt(t));
-      console.log('topicFilters -> ' + JSON.stringify(this.topicFilters));
+      var tids = this.topicFilters.map(function(t) { return parseInt(t.id); });
+      this.get('target').send('volver', tids);
     },
     removeTopicFilter: function(t) {
-      this.topicFilters.removeObject(parseInt(t));
-      console.log('topicFilters -> ' + JSON.stringify(this.topicFilters));
+      var topicFilters = this.get('topicFilters');
+      topicFilters.removeObject(t);
+      var tids = topicFilters.map(function(t) { return parseInt(t.id); });
+      this.get('target').send('volver', tids);
     }
   }
 });

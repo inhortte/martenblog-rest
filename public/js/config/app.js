@@ -1,3 +1,5 @@
+ENV = {FEATURES: {"query-params": true}};
+
 // require other, dependencies here, ie:
 // require('./vendor/moment');
 
@@ -47,10 +49,15 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
     var url;
     if(type.typeKey === 'entry') {
       url = '/' + query.pagina + '/entries';
-      // console.log('find url: ' + url);
+      if(query.t) {
+        url += '?t=' + query.t;
+      }
+      console.log('(findQuery) find url: ' + url);
       return this.ajax(url, 'GET');
     } else {
       url = this.buildURL(type.typeKey);
+      console.log('(findQuery) find url: ' + url);
+      console.log('data -> ' + JSON.stringify(query));
       return this.ajax(url, 'GET', { data: query });
     }
   }

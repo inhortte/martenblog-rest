@@ -1,15 +1,9 @@
-// Currently unused (see ApplicationRoute)
+// unused
 
 var TopicsRoute = Ember.Route.extend({
-  /*
-    model: function() {
-    return this.store.find('topic');
+  model: function(params, queryParams) {
+
   },
-  setupController: function(controller, model) {
-    controller.set('model', model);
-    console.log('TopicsRoute - controller set.');
-  },
-   */
   renderTemplate: function() {
     this.render({outlet: 'topics'});
   }
