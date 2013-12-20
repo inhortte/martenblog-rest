@@ -48,20 +48,17 @@ body {
 }
 
 #hlavni {
-    background: #333333;
+//    background: #333333;
 //    border-bottom: #eee solid 1px;
 }
 
-#hlavni {
-}
-
-lockquote {
-    font-size: smaller;
-    color: grey;
+blockquote p {
+    font-size: 12px;
+    color: #888888;
 }
 
 #rutabaga, #sidebar {
-    background: #000000;
+    background: #000;
     color: #6aef4a;
 }
 
@@ -77,12 +74,20 @@ lockquote {
 //    border-bottom: #ccc solid 1px;
 }
 
+#topics {
+    background: #1e326e;
+}
+
 .entry .timestamp, .full-entry .timestamp {
     font-style: italic;
 }
 
 .entry .subject, .full-entry .subject {
     font-weight: bold;
+}
+
+.subject {
+    color: #e6321e;
 }
 
 .entry .topics, .full-entry .topics {
@@ -100,7 +105,7 @@ lockquote {
 }
 
 .scroll {
-   height: 600px;
+   height: 1000px;
    overflow: scroll;
 }
 .scroll::-webkit-scrollbar {
@@ -116,16 +121,6 @@ lockquote {
     border-radius: 2px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
-
-/*
-#pagination {
-        margin-bottom: 10px;
-//	width: 100%;
-	font-size: 20px;
-	font-family: inherit;
-	padding: 6px;
-}
-*/
 
 #footer #shameless {
     margin-left: -15px;
