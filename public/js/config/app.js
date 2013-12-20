@@ -56,6 +56,8 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
       return this.ajax(url, 'GET');
     } else {
       url = this.buildURL(type.typeKey);
+      console.log('(findQuery) find url: ' + url);
+      console.log('data -> ' + JSON.stringify(query));
       return this.ajax(url, 'GET', { data: query });
     }
   }
