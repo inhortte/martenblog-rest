@@ -62,16 +62,18 @@ blockquote p {
     color: #6aef4a;
 }
 
-#rutabaga {
-//    border-left: #ccc solid 1px;
-//    border-top: #ccc solid 1px;
-//    border-bottom: #ccc solid 1px;
+#rutabaga img {
+    width: 96%;
+    clear: both;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#rutabaga img:after {
+    content: "<br />"
 }
 
 #sidebar {
-//    border-right: #ccc solid 1px;
-//    border-top: #ccc solid 1px;
-//    border-bottom: #ccc solid 1px;
 }
 
 #topics {
