@@ -33,7 +33,7 @@
     "mongojs": "*",
     "underscore-node": "*",
     "async": "*",
-    "showdown": "*",
+    "marked": "*",
     "html5-manifest": "git://github.com/charlesjolley/html5-manifest.git#master"
   },
   "devDependencies": {

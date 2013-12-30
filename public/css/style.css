@@ -1,7 +1,9 @@
 html,
 body {
-    background: #000;
+    background: #00050f;
     font-family: Perpetua, Baskerville, "Big Caslon", "Palatino Linotype", Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif;
+    font-size: 14px;
+    line-height: 18px;
 //    margin-left: auto;
 //    margin-right: auto;
 }
@@ -30,7 +32,6 @@ body {
     height: 90px;
     width: 127px;
     z-index: 10;
-//    outline: solid;
     padding: 0;
     margin: 10px 0 10px 0;
 }
@@ -43,7 +44,6 @@ body {
 
 #sidebar img {
     height: 90px;
-//    outline: solid;
     margin-top: 10px;
 }
 
@@ -58,8 +58,9 @@ blockquote p {
 }
 
 #rutabaga, #sidebar {
-    background: #000;
-    color: #6aef4a;
+    background: #000914;
+//    color: #6aef4a;
+    color: #1e326e;
 }
 
 #rutabaga img {
@@ -73,6 +74,11 @@ blockquote p {
     content: "<br />"
 }
 
+#rutabaga button {
+    background: #1e326e;
+    border: #1e326e;
+}
+
 #sidebar {
 }
 
@@ -82,6 +88,7 @@ blockquote p {
 
 .entry .timestamp, .full-entry .timestamp {
     font-style: italic;
+    color: #1e32e6;
 }
 
 .entry .subject, .full-entry .subject {
@@ -95,6 +102,7 @@ blockquote p {
 .entry .topics, .full-entry .topics {
     margin-bottom: 5px;
     border-bottom: #444 solid 1px;
+    color: #1e32e6;
 }
 
 .entry .actual-entry, .full-entry .actual-entry {
@@ -107,7 +115,7 @@ blockquote p {
 }
 
 .scroll {
-   height: 1000px;
+   height: 800px;
    overflow: scroll;
 }
 .scroll::-webkit-scrollbar {
