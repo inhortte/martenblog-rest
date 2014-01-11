@@ -16,9 +16,13 @@
             {{outlet entries}}
           </div>
           <div id="sidebar" class="col-xs-4 col-sm-4">
-            <div id="pointless-photo">
-              <img src="images/mustelid.jpg" class="img-rounded" />
+            <div id="pointless-image">
+              <img src="images/mustelid.jpg" class="img-rounded"/>
             </div>
+            <div id="recenttracks" class="img-rounded">
+              {{outlet recenttracks}}
+            </div>
+            <br class="clear" />
             <div id="topic-filter">
               {{outlet topic_filter}}
             </div>
