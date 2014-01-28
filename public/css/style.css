@@ -60,8 +60,7 @@ blockquote p {
 
 #rutabaga, #sidebar {
     background: #000914;
-//    color: #6aef4a;
-    color: #1e326e;
+    color: #1e3290;
 }
 
 #rutabaga img {
@@ -71,6 +70,9 @@ blockquote p {
     margin-left: auto;
 }
 
+#rutabaga img:before {
+    content: "<br />"
+}
 #rutabaga img:after {
     content: "<br />"
 }
@@ -81,6 +83,8 @@ blockquote p {
 }
 
 #sidebar {
+    background: #000914;
+    color: #1e326e;
 }
 
 #pointless-image {

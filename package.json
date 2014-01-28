@@ -34,7 +34,8 @@
     "underscore-node": "*",
     "async": "*",
     "marked": "*",
-    "html5-manifest": "git://github.com/charlesjolley/html5-manifest.git#master"
+    "html5-manifest": "git://github.com/charlesjolley/html5-manifest.git#master",
+    "feed": "*"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
