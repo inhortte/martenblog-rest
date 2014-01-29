@@ -58,9 +58,12 @@ blockquote p {
     color: #888888;
 }
 
-#rutabaga, #sidebar {
+#rutabaga {
     background: #0e0e1e;
-    color: #1e3290;
+    color: #428bca;
+}
+#rutabaga .actual-entry a {
+    color: #e6321e;
 }
 
 #rutabaga img {
