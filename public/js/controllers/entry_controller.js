@@ -1,10 +1,11 @@
 var EntryController = Ember.ObjectController.extend({
   nextEntryLink: function() {
-                   return "/#/entry/" + this.get('model.nextEntry').id;
+                   var nextEntry = this.get('model.nextEntry');
+                   return nextEntry ? "/#/entry/" + nextEntry.id : null;
   }.property('model.nextEntry'),
   prevEntryLink: function() {
-                   console.log('EntryController.prevEntryLink ... ' + this.get('model.prevEntry').id);
-                   return "/#/entry/" + this.get('model.prevEntry').id;
+                   var prevEntry = this.get('model.prevEntry');
+                   return prevEntry ? "/#/entry/" + prevEntry.id : null;
   }.property('model.prevEntry')
 });
 

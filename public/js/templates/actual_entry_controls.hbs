@@ -1,12 +1,21 @@
 <div id="entry-controls">
   {{#if prevEntry}}
     <span id="prev-entry" class="small">
-      <a {{bind-attr href=prevEntryLink}}>&lt;&lt; {{formatDateAbbr prevEntry.created_at}}</a>
+      <a {{bind-attr href=prevEntryLink}}>
+        <span class="glyphicon glyphicon-arrow-left"></span>
+        <span id="prev-date">{{formatDateAbbr prevEntry.created_at}}</span>
+      </a>
     </span>
   {{/if}}
+  <span id="go-home" class="small">
+    {{#link-to 'entries' 1}}lemur{{/link-to}}
+  </span>
   {{#if nextEntry}}
     <span id="next-entry" class="small">
-      <a {{bind-attr href=nextEntryLink}}>{{formatDateAbbr nextEntry.created_at}} &gt;&gt;</a>
+      <a {{bind-attr href=nextEntryLink}}>
+        <span id="next-date">{{formatDateAbbr nextEntry.created_at}}</span>
+        <span class="glyphicon glyphicon-arrow-right"></span>
+      </a>
     </span>
   {{/if}}
   <br class="clear" />

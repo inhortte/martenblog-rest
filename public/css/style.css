@@ -168,13 +168,25 @@ blockquote p {
 }
 
 #entry-controls {
+    padding: 12px 24px;
     border-bottom: #444 solid 1px;
 }
 #entry-controls #prev-entry {
     float: left;
 }
+#entry-controls #prev-entry #prev-date {
+    padding-left: 12px;
+}
+#entry-controls #go-home {
+    float: left;
+    padding-left: 24px;
+}
 #entry-controls #next-entry {
-    float: right;
+    float: left;
+}
+#entry-controls #next-entry #next-date {
+    padding-right: 12px;
+    padding-left: 24px;
 }
 .entry .actual-entry, .full-entry .actual-entry {
     padding-bottom: 5px;
