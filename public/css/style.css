@@ -182,14 +182,14 @@ blockquote p {
 }
 #entry-controls #go-home {
     float: left;
-    padding-left: 24px;
+    padding-left: 32px;
 }
 #entry-controls #next-entry {
     float: left;
 }
 #entry-controls #next-entry #next-date {
     padding-right: 12px;
-    padding-left: 24px;
+    padding-left: 32px;
 }
 .entry .actual-entry, .full-entry .actual-entry {
     padding-bottom: 5px;
