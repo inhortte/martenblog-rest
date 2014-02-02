@@ -1,19 +1,19 @@
 <div id="entry-controls">
-  {{#if prevEntry}}
+  {{#if prevDayLink}}
     <span id="prev-entry" class="small">
-      <a {{bind-attr href=prevEntryLink}}>
+      <a {{bind-attr href=prevDayLink}}>
         &lt;&lt;
-        <span id="prev-date">{{formatDateAbbr prevEntry.created_at}}</span>
+        <span id="prev-date">{{formatDay prevDay.created_at}}</span>
       </a>
     </span>
   {{/if}}
   <span id="go-home" class="small">
     {{#link-to 'entries' 1}}lemur{{/link-to}}
   </span>
-  {{#if nextEntry}}
+  {{#if nextDayLink}}
     <span id="next-entry" class="small">
-      <a {{bind-attr href=nextEntryLink}}>
-        <span id="next-date">{{formatDateAbbr nextEntry.created_at}}</span>
+      <a {{bind-attr href=nextDayLink}}>
+        <span id="next-date">{{formatDay nextDay.created_at}}</span>
         &gt;&gt;
       </a>
     </span>

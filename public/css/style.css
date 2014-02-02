@@ -167,9 +167,12 @@ blockquote p {
     color: #1e32e6;
 }
 
+.full-entry {
+    border-bottom: #444 solid 1px;
+    border-top: #444 solid 1px;
+}
 #entry-controls {
     padding: 12px 24px;
-    border-bottom: #444 solid 1px;
 }
 #entry-controls #prev-entry {
     float: left;
