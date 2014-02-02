@@ -1,0 +1,9 @@
+{{#if getEntries.isPending}}
+  <div>Pending....</div>
+{{else}}
+  {{view App.YmdEntryControlsView}}
+  {{#each entries}}
+    {{view App.ActualEntryView}}
+  {{/each}}
+  {{view App.YmdEntryControlsView}}
+{{/if}}
