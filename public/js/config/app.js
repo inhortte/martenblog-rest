@@ -8,6 +8,7 @@ require('../vendor/handlebars');
 require('../vendor/ember');
 require('../vendor/ember-data'); // delete if you don't want ember-data
 require('../vendor/bootstrap');
+require('../vendor/bic_calendar.js');
 var moment = require('../vendor/moment-with-langs.js');
 /*
 require('../vendor/bs-core.max');
@@ -68,3 +69,6 @@ Ember.Inflector.inflector.irregular('entry', 'entries');
 Ember.Inflector.inflector.uncountable('entry_count');
 
 module.exports = App;
+
+//$(document).ready(function() {
+//});
