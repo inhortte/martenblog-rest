@@ -156,7 +156,7 @@ blockquote p {
 .subject {
     color: #e6321e;
 }
-.entry .subject .permalink {
+.entry .subject .permalink, .full-entry .subject .permalink {
     padding-left: 15px;
     font-size: smaller;
 }

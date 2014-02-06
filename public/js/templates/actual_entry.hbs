@@ -2,7 +2,10 @@
   <div class="timestamp small">{{formatDate created_at}}</div>
   <div class="subject">
     {{subject}}
-    <span class="permalink small">{{#link-to 'entry' id}}leperlink{{/link-to}}</span>
+    {{#if pineMarten}}
+    {{else}}
+      <span class="permalink small">{{#link-to 'entry' id}}leperlink{{/link-to}}</span>
+    {{/if}}
   </div>
   <div class="topics small"><strong>Topics</strong>: {{topicList}}</div>
   <div class="actual-entry">
